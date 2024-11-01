@@ -15,8 +15,6 @@ const transporter = nodemailer.createTransport({
     pass: process.env.USERPASS,
   },
 });
-
-export default function handler(req, res) {
 // Schedule to send email every minute
 cron.schedule("* * * * *", async () => {
     try{
@@ -134,7 +132,3 @@ cron.schedule("* * * * *", async () => {
         console.log("Error: ",error)
     }
 });
-
-res.status(200).json({ status: "cron job scheduled" });
-
-}
