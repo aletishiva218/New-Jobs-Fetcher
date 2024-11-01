@@ -134,4 +134,7 @@ cron.schedule("* * * * *", async () => {
         console.log("Error: ",error)
     }
 });
+
+res.status(200).json({ status: "cron job scheduled" });
+
 }
