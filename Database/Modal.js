@@ -1,9 +1,20 @@
-import mongoose from "./Config.js";
+const mongoose = require("./Config.js");
 
-const jobSchema = mongoose.Schema({
-   jobId:String
+
+const registeredSchema = mongoose.Schema({
+   email:String,
+   password:String,
+   otp:Number,
+   verified:Boolean
 })
 
-const Jobs = new mongoose.model("job",jobSchema)
+const usersSchema = mongoose.Schema({
+   email:String,
+   jobs:Object
+})
 
-export {Jobs};
+const registered_users = new mongoose.model("registered_users",registeredSchema)
+const users_jobs = new mongoose.model("users_jobs",usersSchema)
+
+
+module.exports= {registered_users,users_jobs};
